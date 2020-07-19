@@ -204,31 +204,6 @@ h2 {
   animation: pop-in 1s;
 }
 
-@keyframes scroll-background {
-  from {
-    background-position-y: 0px;
-  }
-  to {
-    background-position-y: 256px;
-  }
-}
-
-@keyframes pop-in {
-  0% {
-    opacity: 0;
-    transform: translate(0, -100px);
-  }
-  10% {
-    opacity: 1;
-  }
-  50% {
-    transform: translate(0, 30px);
-  }
-  100% {
-    transform: translate(0, 0);
-  }
-}
-
 /* media Queries */
 
 @media (min-width: 768px) {
