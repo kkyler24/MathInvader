@@ -1,0 +1,104 @@
+html,
+body {
+  font-size: 16px;
+  columns: #222b3f;
+}
+/*  navbar*/
+
+.navbar.navbar-transparent {
+  background-color: transparent !important;
+  box-shadow: none;
+  color: #fff;
+  padding-top: 20px !important;
+}
+
+.fixed-top {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1030;
+}
+#navbarNav {
+  justify-content: flex-end;
+}
+
+#marginb {
+  margin-bottom: 20px !important;
+}
+.navbar {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+  padding-top: 0.625rem;
+  padding-bottom: 0.625rem;
+  min-height: 53px;
+}
+
+a {
+  color: #222b3f;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+.container {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.button-dropdown {
+  padding-right: 0.7rem;
+  cursor: pointer;
+}
+
+.navbar.navbar-transparent {
+  background-color: transparent !important;
+  color: #fff;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.navbar > .container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#titleG {
+  font-family: "Chakra Petch", sans-serif;
+  font-size: 50px;
+}
+
+@media (max-width: 991.98px) {
+  .navbar-expand-lg > .container {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 720px;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .button-dropdown {
+    display: none;
+  }
+}
+
+@media (min-width: 992px) {
+  .navbar-expand-lg .navbar-toggler {
+    display: none;
+  }
+}

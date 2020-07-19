@@ -160,18 +160,6 @@ a {
   padding-right: 15px;
   padding-left: 15px;
 }
-h2 {
-  margin-bottom: 30px;
-  line-height: 1.2;
-}
-
-#backgroundsection {
-  background-image: url("./pictures/MathApics/spaceship/cosmicgalaxbluebackground.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  width: 100%;
-  height: 900px;
-}
 
 /* media Queries */
 
