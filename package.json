@@ -1,0 +1,23 @@
+{
+  "name": "MathInvader",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kkyler24/MathInvader.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kkyler24/MathInvader/issues"
+  },
+  "homepage": "https://github.com/kkyler24/MathInvader#readme",
+  "dependencies": {
+    "init": "^0.1.2"
+  }
+}
