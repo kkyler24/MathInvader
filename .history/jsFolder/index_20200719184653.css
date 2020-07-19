@@ -1,7 +1,7 @@
 html,
 body {
   height: 100%;
-
+  overflow: hidden;
   font-size: 16px;
   columns: #222b3f;
 }
@@ -116,7 +116,7 @@ a {
 }
 
 .content-center {
-  position: relative;
+  position: absolute;
   top: 50%;
   left: 50%;
   z-index: 2;
@@ -177,16 +177,16 @@ h2 {
   background-repeat: no-repeat;
   background-size: cover;
   width: 100%;
-  height: auto;
+  height: 900px;
 }
 
 /* Game */
 
-#Game {
+.game {
   width: 800px;
   height: 700px;
   background: url("/jsFolder/pictures/MathApics/spaceship/cosmicgalaxbluebackground.jpg");
-  animation: scroll-background 6s linear infinite;
+  animation: scroll-background 5s linear infinite;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
   position: relative;
 }
