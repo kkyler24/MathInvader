@@ -1,5 +1,5 @@
 {
-  "name": "MathInvader",
+  "name": "mathinvader",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -18,6 +18,8 @@
   },
   "homepage": "https://github.com/kkyler24/MathInvader#readme",
   "dependencies": {
-    "init": "^0.1.2"
-  }
+    "init": "^0.1.2",
+    "node": "^14.5.0"
+  },
+  "devDependencies": {}
 }
