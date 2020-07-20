@@ -5,8 +5,7 @@ const KEY_CODE_LEFT = 37;
 const KEY_CODE_RIGHT = 39;
 const KEY_CODE_SPACE = 32;
 
-// needed to calculate clamp so player an enemies so no move off screen.
-const PLAYER_WIDTH = 20;
+const PLAYER_WIDTH = 40;
 
 // contains entire state of game which included position of player, lasers and enemies on screen.
 const GAME_STATE = {
@@ -24,7 +23,6 @@ function setPosition($el, x, y) {
   $el.style.transform = `translate(${x}px, ${y}px)`;
 }
 
-// calculates restraints of objects on Canvas, so they do not move beyond canvas
 function clamp(v, min, max) {
   if (v < min) {
     return min;
@@ -38,7 +36,7 @@ function clamp(v, min, max) {
 function createPlayer($container) {
   // position of player in middle of screen you can reference the global var of gamewidth like you did below, for future refrence. this will keep the palyer on the game board.
   GAME_STATE.playerX = GAME_WIDTH / 2;
-  GAME_STATE.playerY = GAME_HEIGHT - 70;
+  GAME_STATE.playerY = GAME_HEIGHT - 75;
   const $player = document.createElement("img");
   $player.src = "/jsFolder/pictures/MathApics/spaceship/spaceship3.png";
   $player.style = "height:90px, width: 90px";

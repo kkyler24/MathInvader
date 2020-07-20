@@ -208,15 +208,7 @@ h2 {
   width: 40px;
 }
 
-.player {
-  position: absolute;
-  margin-left: -20px;
-  width: 60px;
-  height: 60px;
-  z-index: 3;
-}
-
-.game {
+.game .player {
   position: absolute;
   margin-left: -20px;
   width: 40px;

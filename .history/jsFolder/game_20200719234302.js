@@ -5,8 +5,7 @@ const KEY_CODE_LEFT = 37;
 const KEY_CODE_RIGHT = 39;
 const KEY_CODE_SPACE = 32;
 
-// needed to calculate clamp so player an enemies so no move off screen.
-const PLAYER_WIDTH = 20;
+const PLAYER_WIDTH = 40;
 
 // contains entire state of game which included position of player, lasers and enemies on screen.
 const GAME_STATE = {
@@ -24,7 +23,6 @@ function setPosition($el, x, y) {
   $el.style.transform = `translate(${x}px, ${y}px)`;
 }
 
-// calculates restraints of objects on Canvas, so they do not move beyond canvas
 function clamp(v, min, max) {
   if (v < min) {
     return min;
