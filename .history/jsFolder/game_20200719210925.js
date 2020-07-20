@@ -35,9 +35,5 @@ function init() {
   createPlayer($container);
 }
 
-function onKeyDown(e) {
-  console.log(e);
-}
-
 init();
 window.addEventListener("keydown", onKeyDown);

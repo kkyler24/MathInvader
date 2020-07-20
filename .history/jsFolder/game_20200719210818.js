@@ -1,4 +1,4 @@
-const GAME_WIDTH = 800;
+const GAME_WIDTH = 900;
 const GAME_HEIGHT = 700;
 
 const KEY_CODE_LEFT = 37;
@@ -20,7 +20,7 @@ function setPosition($el, x, y) {
 function createPlayer($container) {
   // position of player in middle of screen you can reference the global var of gamewidth like you did below, for future refrence. this will keep the palyer on the game board.
   GAME_STATE.playerX = GAME_WIDTH / 2;
-  GAME_STATE.playerY = GAME_HEIGHT - 85;
+  GAME_STATE.playerY = GAME_HEIGHT - 70;
   const $player = document.createElement("img");
   $player.src = "/jsFolder/pictures/MathApics/spaceship/spaceship3.png";
   $player.style = "height:90px, width: 90px";
@@ -33,10 +33,6 @@ function createPlayer($container) {
 function init() {
   const $container = document.querySelector(".Game");
   createPlayer($container);
-}
-
-function onKeyDown(e) {
-  console.log(e);
 }
 
 init();

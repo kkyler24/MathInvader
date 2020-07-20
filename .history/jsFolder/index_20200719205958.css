@@ -208,7 +208,7 @@ h2 {
   width: 40px;
 }
 
-.game #player {
+.game .player {
   position: absolute;
   margin-left: -20px;
   width: 40px;
