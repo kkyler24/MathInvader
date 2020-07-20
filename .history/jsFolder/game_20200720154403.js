@@ -286,15 +286,15 @@ function init() {
   const $container = document.querySelector(".Game");
   createPlayer($container);
 
-  const enemySpacing =
-    (GAME_WIDTH - ENEMY_HORIZONTAL_PADDING * 2) / ENEMIES_PER_ROW - 0.5;
-  for (let j = 0; j < 2; j++) {
-    const y = ENEMY_VERTICAL_PADDING + j * ENEMY_VERTICAL_SPACING;
-    for (let i = 0; i < ENEMIES_PER_ROW; i++) {
-      const x = i * enemySpacing + ENEMY_HORIZONTAL_PADDING;
-      createEnemy($container, x, y);
-    }
-  }
+  // const enemySpacing =
+  //   (GAME_WIDTH - ENEMY_HORIZONTAL_PADDING * 90) / ENEMIES_PER_ROW - 0.5;
+  // for (let j = 0; j < 3; j++) {
+  //   const y = ENEMY_VERTICAL_PADDING + j * ENEMY_VERTICAL_SPACING;
+  //   for (let i = 0; i < ENEMIES_PER_ROW; i++) {
+  //     const x = i * enemySpacing + ENEMY_HORIZONTAL_PADDING;
+  //     createEnemy($container, x, y);
+  //   }
+  // }
 }
 
 function update(e) {
