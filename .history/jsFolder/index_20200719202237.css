@@ -50,8 +50,8 @@ a {
   width: 100%;
   padding-right: 15px;
   padding-left: 15px;
-  margin-right: auto;
-  margin-left: auto;
+  margin-right: 120px;
+  margin-left: 120px;
 }
 
 .button-dropdown {
@@ -198,7 +198,7 @@ h2 {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* background: #2; */
+  background: #222;
 }
 
 .game .enemy {

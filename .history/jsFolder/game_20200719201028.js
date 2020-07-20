@@ -11,8 +11,6 @@ const GAME_STATE = {
   playerY: 0,
 };
 
-// positioning for our enemies
-
 function setPosition($el, x, y) {
   $el.style.transform = `translate(${x}px, ${y}px)`;
 }
@@ -22,7 +20,7 @@ function createPlayer($container) {
   GAME_STATE.playerX = GAME_WIDTH / 2;
   GAME_STATE.playerY = GAME_HEIGHT - 50;
   const $player = document.createElement("img");
-  $player.src = "/jsFolder/pictures/MathApics/spaceship/spaceship.png";
+  $player.src = "img/player-blue-1.png";
   $player.className = "player";
   $container.appendChild($player);
   setPosition($player, GAME_STATE.playerX, GAME_STATE.playerY);

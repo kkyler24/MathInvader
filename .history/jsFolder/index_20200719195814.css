@@ -1,7 +1,7 @@
 html,
 body {
   height: 100%;
-  margin: 0;
+
   font-size: 16px;
   columns: #222b3f;
 }
@@ -46,7 +46,7 @@ a {
   background-color: transparent;
 }
 
-.containerM {
+.container {
   width: 100%;
   padding-right: 15px;
   padding-left: 15px;
@@ -169,7 +169,7 @@ h2 {
 }
 
 #backgroundSection {
-  background-image: url("./pictures/MathApics/spaceship/blackmatte.jpg");
+  background-image: url("./pictures/MathApics/spaceship/rocketSky.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   width: 100%;
@@ -179,9 +179,9 @@ h2 {
 /* Game */
 
 #Game {
-  width: 900px;
-  height: 700px;
-  background: url("/jsFolder/pictures/MathApics/spaceship/blackskybackground.jpg");
+  width: 1000px;
+  height: 800px;
+  background: url("/jsFolder/pictures/MathApics/spaceship/cosmicgalaxbluebackground.jpg");
   animation: scroll-background 6s linear infinite;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
   position: relative;
@@ -198,7 +198,7 @@ h2 {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* background: #2; */
+  background: #222;
 }
 
 .game .enemy {

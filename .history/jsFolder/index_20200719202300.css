@@ -198,7 +198,7 @@ h2 {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* background: #2; */
+  background: #222;
 }
 
 .game .enemy {

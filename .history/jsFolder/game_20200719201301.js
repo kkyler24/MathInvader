@@ -11,8 +11,6 @@ const GAME_STATE = {
   playerY: 0,
 };
 
-// positioning for our enemies
-
 function setPosition($el, x, y) {
   $el.style.transform = `translate(${x}px, ${y}px)`;
 }
