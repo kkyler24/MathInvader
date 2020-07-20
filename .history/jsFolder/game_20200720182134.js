@@ -293,7 +293,7 @@ function init() {
   createPlayer($container);
 
   const enemySpacing =
-    (GAME_WIDTH - ENEMY_HORIZONTAL_PADDING * 1) / ENEMIES_PER_ROW - 2;
+    (GAME_WIDTH - ENEMY_HORIZONTAL_PADDING * 2) / ENEMIES_PER_ROW - 1;
   for (let j = 0; j < 3; j++) {
     const y = ENEMY_VERTICAL_PADDING + j * ENEMY_VERTICAL_SPACING;
     for (let i = 0; i < ENEMIES_PER_ROW; i++) {

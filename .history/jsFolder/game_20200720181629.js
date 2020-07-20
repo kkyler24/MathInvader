@@ -13,8 +13,8 @@ const LASER_MAX_SPEED = 300.0;
 const LASER_COOLDOWN = 0.5;
 
 const TOKENS_PER_ROW = 10;
-const ENEMIES_PER_ROW = 7;
-const ENEMY_HORIZONTAL_PADDING = 50;
+const ENEMIES_PER_ROW = 4;
+const ENEMY_HORIZONTAL_PADDING = 80;
 const ENEMY_VERTICAL_PADDING = 70;
 const ENEMY_VERTICAL_SPACING = 80;
 const ENEMY_COOLDOWN = 5.0;
@@ -204,27 +204,21 @@ function destroyLaser($container, laser) {
 function createEnemy($container, x, y) {
   const $element1 = document.createElement("img");
   const $element2 = document.createElement("img");
-  const $element3 = document.createElement("img");
   $element1.src =
     "/jsFolder/pictures/MathApics/invaders_png/angerangryalien1.png";
   $element2.src = "/jsFolder/pictures/MathApics/invaders_png/orange.png";
-  $element3.src = "/jsFolder/pictures/MathApics/invaders_png/red.png";
   $element1.className = "enemy";
   $element2.className = "enemy";
-  $element3.className = "enemy";
   $container.appendChild($element1);
   $container.appendChild($element2);
-  $container.appendChild($element3);
   const enemy = {
     x,
     y,
     cooldown: rand(0.5, ENEMY_COOLDOWN),
     $element1,
     $element2,
-    $element3,
   };
   GAME_STATE.enemies.push(enemy);
-  setPosition($element3, x + 80, y);
   setPosition($element1, x + 40, y);
   setPosition($element2, x, y);
 }
@@ -293,8 +287,8 @@ function init() {
   createPlayer($container);
 
   const enemySpacing =
-    (GAME_WIDTH - ENEMY_HORIZONTAL_PADDING * 1) / ENEMIES_PER_ROW - 2;
-  for (let j = 0; j < 3; j++) {
+    (GAME_WIDTH - ENEMY_HORIZONTAL_PADDING * 5) / ENEMIES_PER_ROW - 1;
+  for (let j = 0; j < 4; j++) {
     const y = ENEMY_VERTICAL_PADDING + j * ENEMY_VERTICAL_SPACING;
     for (let i = 0; i < ENEMIES_PER_ROW; i++) {
       const x = i * enemySpacing + ENEMY_HORIZONTAL_PADDING;
