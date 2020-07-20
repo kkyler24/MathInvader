@@ -48,7 +48,7 @@ function updatePlayer() {
     PLAYER_WIDTH,
     GAME_WIDTH - PLAYER_WIDTH
   );
-}
+
 
 // initializes players and function of the game
 function init() {
@@ -56,7 +56,7 @@ function init() {
   createPlayer($container);
 }
 
-// game loop runs every frame all the time and makes sure everything runs smoothly makes sure that all elements that have to move actually move it.
+// game loop runs every frame all the time and makes sure everything runs smoothly makes sure that all elements that have to move actually move it will 
 function update(e) {
   updatePlayer();
   window.requestAnimationFrame(update);
@@ -88,5 +88,3 @@ function onKeyDown(e) {
 
 init();
 window.addEventListener("keydown", onKeyDown);
-window.addEventListener("keyup", onKeyUp);
-window.requestAnimationFrame(update);
