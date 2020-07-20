@@ -117,7 +117,7 @@ function updatePlayer(dt, $container) {
 // laser container
 function createLaser($container, x, y) {
   const $element = document.createElement("img");
-  $element.src = "/jsFolder/pictures/img/laser-blue-1.png";
+  $element.src = "./pictures/img/laser-blue-1.png";
   $element.className = "laser";
   $container.appendChild($element);
   const laser = { x, y, $element };
@@ -151,11 +151,6 @@ function updateLasers(dt, $container) {
     }
   }
   GAME_STATE.lasers = GAME_STATE.lasers.filter((e) => !e.isDead);
-}
-
-function destroyLaser($container, laser) {
-  $container.removeChild(laser.$element);
-  laser.isDead = true;
 }
 
 function init() {

@@ -81,12 +81,12 @@ function createPlayer($container) {
 }
 
 // you lose, when player is hit but laser.
-// function destroyPlayer($container, player) {
-//   $container.removeChild(player);
-//   GAME_STATE.gameOver = true;
-//   const audio = new Audio("sound/sfx-lose.ogg");
-//   audio.play();
-// }
+function destroyPlayer($container, player) {
+  $container.removeChild(player);
+  GAME_STATE.gameOver = true;
+  const audio = new Audio("sound/sfx-lose.ogg");
+  audio.play();
+}
 
 function updatePlayer(dt, $container) {
   if (GAME_STATE.leftPressed) {
@@ -117,12 +117,12 @@ function updatePlayer(dt, $container) {
 // laser container
 function createLaser($container, x, y) {
   const $element = document.createElement("img");
-  $element.src = "/jsFolder/pictures/img/laser-blue-1.png";
+  $element.src = "img/laser-blue-1.png";
   $element.className = "laser";
   $container.appendChild($element);
   const laser = { x, y, $element };
   GAME_STATE.lasers.push(laser);
-  const audio = new Audio("./pictures/sound/sfx-laser1.ogg");
+  const audio = new Audio("sound/sfx-laser1.ogg");
   audio.play();
   setPosition($element, x, y);
 }
@@ -153,13 +153,8 @@ function updateLasers(dt, $container) {
   GAME_STATE.lasers = GAME_STATE.lasers.filter((e) => !e.isDead);
 }
 
-function destroyLaser($container, laser) {
-  $container.removeChild(laser.$element);
-  laser.isDead = true;
-}
-
 function init() {
-  const $container = document.querySelector(".Game");
+  const $container = document.querySelector(".game");
   createPlayer($container);
 }
 
@@ -167,7 +162,7 @@ function update(e) {
   const currentTime = Date.now();
   const dt = (currentTime - GAME_STATE.lastTime) / 1000.0;
 
-  const $container = document.querySelector(".Game");
+  const $container = document.querySelector(".game");
   updatePlayer(dt, $container);
   updateLasers(dt, $container);
 
