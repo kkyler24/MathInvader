@@ -182,7 +182,7 @@ h2 {
   width: 900px;
   height: 700px;
   background: url("/jsFolder/pictures/MathApics/spaceship/blackskybackground.jpg");
-  animation: scroll-background 5s linear infinite;
+  animation: scroll-background 10s linear infinite;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
   position: relative;
 }
@@ -256,7 +256,7 @@ h2 {
     background-position-y: 0px;
   }
   to {
-    background-position-y: 300px;
+    background-position-y: 256px;
   }
 }
 

@@ -34,32 +34,10 @@ function createPlayer($container) {
   setPosition($player, GAME_STATE.playerX, GAME_STATE.playerY);
 }
 
-function updatePlayer() {
-  if (GAME_STATE.leftPressed) {
-    GAME_STATE.playerX -= 5;
-  }
-  if (GAME_STATE.rightPressed) {
-    GAME_STATE.playerX += 5;
-  }
-
-  // constraints the player to the game board.
-  GAME_STATE.playerX = clamp(
-    GAME_STATE.playerX,
-    PLAYER_WIDTH,
-    GAME_WIDTH - PLAYER_WIDTH
-  );
-
-
 // initializes players and function of the game
 function init() {
   const $container = document.querySelector(".Game");
   createPlayer($container);
-}
-
-// game loop runs all the time and makes sure everything runs smoothly makes sure that all elements that have to move actually move
-function update(e) {
-  updatePlayer();
-  window.requestAnimationFrame(update);
 }
 
 function onKeyDown(e) {
