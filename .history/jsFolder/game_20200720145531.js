@@ -13,10 +13,10 @@ const LASER_MAX_SPEED = 300.0;
 const LASER_COOLDOWN = 0.5;
 
 const TOKENS_PER_ROW = 10;
-const ENEMIES_PER_ROW = 3;
-const ENEMY_HORIZONTAL_PADDING = 30;
-const ENEMY_VERTICAL_PADDING = 20;
-const ENEMY_VERTICAL_SPACING = 40;
+const ENEMIES_PER_ROW = 5;
+const ENEMY_HORIZONTAL_PADDING = 80;
+const ENEMY_VERTICAL_PADDING = 70;
+const ENEMY_VERTICAL_SPACING = 80;
 const ENEMY_COOLDOWN = 5.0;
 // contains entire state of game which included position of player, lasers and enemies on screen.
 const tokensArray = [
@@ -200,27 +200,20 @@ function destroyLaser($container, laser) {
   laser.isDead = true;
 }
 
-// // CREATE ENEMY
+// CREATE ENEMY
 function createEnemy($container, x, y) {
-  const $element1 = document.createElement("img");
-  const $element2 = document.createElement("img");
-  $element1.src =
-    "/jsFolder/pictures/MathApics/invaders_png/angerangryalien1.png";
-  $element2.src = "/jsFolder/pictures/MathApics/invaders_png/orange.png";
-  $element1.className = "enemy";
-  $element2.className = "enemy";
-  $container.appendChild($element1);
-  $container.appendChild($element2);
+  const $element = document.createElement("img");
+  $element.src = "/jsFolder/pictures/img/enemy-blue-1.png";
+  $element.className = "enemy";
+  $container.appendChild($element);
   const enemy = {
     x,
     y,
     cooldown: rand(0.5, ENEMY_COOLDOWN),
-    $element1,
-    $element2,
+    $element,
   };
   GAME_STATE.enemies.push(enemy);
-  setPosition($element1, x, y);
-  setPosition($element2, x, y);
+  setPosition($element, x, y);
 }
 
 function updateEnemies(dt, $container) {
@@ -243,51 +236,51 @@ function updateEnemies(dt, $container) {
 }
 
 // tokens
-// function createTokens($container, x, y) {
-//   const $element = document.createElement("img");
-//   const index = Math.random() * tokensArray.lenghth;
-//   $element.src = tokensArray[index].url;
-//   $element.className = "token";
-//   $element.setAttribute("data-point", tokensArray[index].point);
-//   $container.appendChild($element);
-//   const tokens = { x, y, $element };
-//   GAME_STATE.tokens.push(tokens);
-//   // const audio = new Audio("./pictures/sound/sfx-laser1.ogg");
-//   // audio.play();
-//   setPosition($element, x, y);
-// }
+function createTokens($container, x, y) {
+  const $element = document.createElement("img");
+  const index = Math.random() * tokensArray.lenghth;
+  $element.src = tokensArray[index].url;
+  $element.className = "token";
+  $element.setAttribute("data-point", tokensArray[index].point);
+  $container.appendChild($element);
+  const tokens = { x, y, $element };
+  GAME_STATE.tokens.push(tokens);
+  // const audio = new Audio("./pictures/sound/sfx-laser1.ogg");
+  // audio.play();
+  setPosition($element, x, y);
+}
 
-// function updateTokens(dt, $container) {
-//   const tokens = GAME_STATE.tokens;
-//   for (let i = 0; i < tokensArray.length; i++) {
-//     const tokens = tokens[i];
-//     tokens.y -= dt * LASER_MAX_SPEED;
-//     if (tokens.y < 0) {
-//       destroyLaser($container, tokens);
-//     }
-//     setPosition(tokens.$element, tokens.x, tokens.y);
-//     const r1 = tokens.$element.getBoundingClientRect();
-//     const enemies = GAME_STATE.enemies;
-//     for (let j = 0; j < enemies.length; j++) {
-//       const enemy = enemies[j];
-//       if (enemy.isDead) continue;
-//       const r2 = enemy.$element.getBoundingClientRect();
-//       if (rectsIntersect(r1, r2)) {
-//         // Enemy was hit
-//         destroyToken($container, tokens);
-//         // get attribute point form container nd push into array.
-//       }
-//     }
-//   }
-//   GAME_STATE.tokens = GAME_STATE.tokens.filter((e) => !e.isDead);
-// }
+function updateTokens(dt, $container) {
+  const tokens = GAME_STATE.tokens;
+  for (let i = 0; i < tokensArray.length; i++) {
+    const tokens = tokens[i];
+    tokens.y -= dt * LASER_MAX_SPEED;
+    if (tokens.y < 0) {
+      destroyLaser($container, tokens);
+    }
+    setPosition(tokens.$element, tokens.x, tokens.y);
+    const r1 = tokens.$element.getBoundingClientRect();
+    const enemies = GAME_STATE.enemies;
+    for (let j = 0; j < enemies.length; j++) {
+      const enemy = enemies[j];
+      if (enemy.isDead) continue;
+      const r2 = enemy.$element.getBoundingClientRect();
+      if (rectsIntersect(r1, r2)) {
+        // Enemy was hit
+        destroyToken($container, tokens);
+        // get attribute point form container nd push into array.
+      }
+    }
+  }
+  GAME_STATE.tokens = GAME_STATE.tokens.filter((e) => !e.isDead);
+}
 
 function init() {
   const $container = document.querySelector(".Game");
   createPlayer($container);
 
   const enemySpacing =
-    (GAME_WIDTH - ENEMY_HORIZONTAL_PADDING * 90) / ENEMIES_PER_ROW - 0.5;
+    (GAME_WIDTH - ENEMY_HORIZONTAL_PADDING * 2) / (ENEMIES_PER_ROW - 1);
   for (let j = 0; j < 3; j++) {
     const y = ENEMY_VERTICAL_PADDING + j * ENEMY_VERTICAL_SPACING;
     for (let i = 0; i < ENEMIES_PER_ROW; i++) {

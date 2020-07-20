@@ -13,8 +13,8 @@ const LASER_MAX_SPEED = 300.0;
 const LASER_COOLDOWN = 0.5;
 
 const TOKENS_PER_ROW = 10;
-const ENEMIES_PER_ROW = 3;
-const ENEMY_HORIZONTAL_PADDING = 30;
+const ENEMIES_PER_ROW = 6;
+const ENEMY_HORIZONTAL_PADDING = 20;
 const ENEMY_VERTICAL_PADDING = 20;
 const ENEMY_VERTICAL_SPACING = 40;
 const ENEMY_COOLDOWN = 5.0;
@@ -287,7 +287,7 @@ function init() {
   createPlayer($container);
 
   const enemySpacing =
-    (GAME_WIDTH - ENEMY_HORIZONTAL_PADDING * 90) / ENEMIES_PER_ROW - 0.5;
+    (GAME_WIDTH - ENEMY_HORIZONTAL_PADDING * 50) / ENEMIES_PER_ROW - 0.5;
   for (let j = 0; j < 3; j++) {
     const y = ENEMY_VERTICAL_PADDING + j * ENEMY_VERTICAL_SPACING;
     for (let i = 0; i < ENEMIES_PER_ROW; i++) {

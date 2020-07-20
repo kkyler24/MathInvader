@@ -4,7 +4,7 @@ const GAME_HEIGHT = 700;
 const KEY_CODE_LEFT = 37;
 const KEY_CODE_RIGHT = 39;
 const KEY_CODE_SPACE = 32;
-const POINT_VALUE = 0;
+
 // needed to calculate clamp so player an enemies so no move off screen.
 const PLAYER_WIDTH = 5;
 // ship movement speed
@@ -13,49 +13,22 @@ const LASER_MAX_SPEED = 300.0;
 const LASER_COOLDOWN = 0.5;
 
 const TOKENS_PER_ROW = 10;
-const ENEMIES_PER_ROW = 3;
-const ENEMY_HORIZONTAL_PADDING = 30;
-const ENEMY_VERTICAL_PADDING = 20;
-const ENEMY_VERTICAL_SPACING = 40;
+const ENEMIES_PER_ROW = 10;
+const ENEMY_HORIZONTAL_PADDING = 80;
+const ENEMY_VERTICAL_PADDING = 70;
+const ENEMY_VERTICAL_SPACING = 80;
 const ENEMY_COOLDOWN = 5.0;
 // contains entire state of game which included position of player, lasers and enemies on screen.
 const tokensArray = [
-  {
-    url: "/jsFolder/pictures/MathApics/invaders_png/one.png",
-    point: 1,
-  },
-  {
-    url: "/jsFolder/pictures/MathApics/invaders_png/two.png",
-    point: 2,
-  },
-  {
-    url: "/jsFolder/pictures/MathApics/invaders_png/three.png",
-    point: 3,
-  },
-  {
-    url: "/jsFolder/pictures/MathApics/invaders_png/four.png",
-    point: 4,
-  },
-  {
-    url: "/jsFolder/pictures/MathApics/invaders_png/five.png",
-    point: 5,
-  },
-  {
-    url: "/jsFolder/pictures/MathApics/invaders_png/six.png",
-    point: 6,
-  },
-  {
-    url: "/jsFolder/pictures/MathApics/invaders_png/seven.png",
-    point: 7,
-  },
-  {
-    url: "/jsFolder/pictures/MathApics/invaders_png/eight.png",
-    point: 8,
-  },
-  {
-    url: "/jsFolder/pictures/MathApics/invaders_png/nine.png",
-    point: 9,
-  },
+  "/jsFolder/pictures/MathApics/invaders_png/one.png",
+  "/jsFolder/pictures/MathApics/invaders_png/two.png",
+  "/jsFolder/pictures/MathApics/invaders_png/three.png",
+  "/jsFolder/pictures/MathApics/invaders_png/four.png",
+  "/jsFolder/pictures/MathApics/invaders_png/five.png",
+  "/jsFolder/pictures/MathApics/invaders_png/six.png",
+  "/jsFolder/pictures/MathApics/invaders_png/seven.png",
+  "/jsFolder/pictures/MathApics/invaders_png/eight.png",
+  "/jsFolder/pictures/MathApics/invaders_png/nine.png",
 ];
 
 const GAME_STATE = {
@@ -71,19 +44,18 @@ const GAME_STATE = {
   lasers: [],
   enemies: [],
   tokens: [],
-  pointvalue: [],
-  enemyLasers: [],
+  // enemyLasers: [],
   gameOver: false,
 };
 
-function rectsIntersect(r1, r2) {
-  return !(
-    r2.left > r1.right ||
-    r2.right < r1.left ||
-    r2.top > r1.bottom ||
-    r2.bottom < r1.top
-  );
-}
+// function rectsIntersect(r1, r2) {
+//   return !(
+//     r2.left > r1.right ||
+//     r2.right < r1.left ||
+//     r2.top > r1.bottom ||
+//     r2.bottom < r1.top
+//   );
+// }
 
 // positioning for our enemies
 function setPosition($el, x, y) {
@@ -104,11 +76,11 @@ function clamp(v, min, max) {
   }
 }
 
-function rand(min, max) {
-  if (min === undefined) min = 0;
-  if (max === undefined) max = 1;
-  return min + Math.random() * (max - min);
-}
+// function rand(min, max) {
+//   if (min === undefined) min = 0;
+//   if (max === undefined) max = 1;
+//   return min + Math.random() * (max - min);
+// }
 
 function createPlayer($container) {
   // position of player in middle of screen you can reference the global var of gamewidth like you did below, for future refrence. this will keep the palyer on the game board.
@@ -123,12 +95,12 @@ function createPlayer($container) {
 }
 
 // you lose, when player is hit but laser.
-function destroyPlayer($container, player) {
-  $container.removeChild(player);
-  GAME_STATE.gameOver = true;
-  // const audio = new Audio("sound/sfx-lose.ogg");
-  audio.play();
-}
+// function destroyPlayer($container, player) {
+//   $container.removeChild(player);
+//   GAME_STATE.gameOver = true;
+//   const audio = new Audio("sound/sfx-lose.ogg");
+//   audio.play();
+// }
 
 function updatePlayer(dt, $container) {
   if (GAME_STATE.leftPressed) {
@@ -164,8 +136,8 @@ function createLaser($container, x, y) {
   $container.appendChild($element);
   const laser = { x, y, $element };
   GAME_STATE.lasers.push(laser);
-  // const audio = new Audio("./pictures/sound/sfx-laser1.ogg");
-  // audio.play();
+  const audio = new Audio("./pictures/sound/sfx-laser1.ogg");
+  audio.play();
   setPosition($element, x, y);
 }
 
@@ -200,117 +172,53 @@ function destroyLaser($container, laser) {
   laser.isDead = true;
 }
 
-// // CREATE ENEMY
-function createEnemy($container, x, y) {
-  const $element1 = document.createElement("img");
-  const $element2 = document.createElement("img");
-  $element1.src =
-    "/jsFolder/pictures/MathApics/invaders_png/angerangryalien1.png";
-  $element2.src = "/jsFolder/pictures/MathApics/invaders_png/orange.png";
-  $element1.className = "enemy";
-  $element2.className = "enemy";
-  $container.appendChild($element1);
-  $container.appendChild($element2);
-  const enemy = {
-    x,
-    y,
-    cooldown: rand(0.5, ENEMY_COOLDOWN),
-    $element1,
-    $element2,
-  };
-  GAME_STATE.enemies.push(enemy);
-  setPosition($element1, x, y);
-  setPosition($element2, x, y);
+// tokens
+function createTokens($container, x, y) {
+  const $element = document.createElement("img");
+  $element.src = "/jsFolder/pictures/MathApics/invaders_png/one.png";
+  $element.className = "token";
+  $container.appendChild($element);
+  const laser = { x, y, $element };
+  GAME_STATE.token.push(token);
+  // const audio = new Audio("./pictures/sound/sfx-laser1.ogg");
+  // audio.play();
+  setPosition($element, x, y);
 }
 
-function updateEnemies(dt, $container) {
-  const dx = Math.sin(GAME_STATE.lastTime / 1000.0) * 50;
-  const dy = Math.cos(GAME_STATE.lastTime / 1000.0) * 10;
-
-  const enemies = GAME_STATE.enemies;
-  for (let i = 0; i < enemies.length; i++) {
-    const enemy = enemies[i];
-    const x = enemy.x + dx;
-    const y = enemy.y + dy;
-    setPosition(enemy.$element, x, y);
-    enemy.cooldown -= dt;
-    if (enemy.cooldown <= 0) {
-      createEnemyLaser($container, x, y);
-      enemy.cooldown = ENEMY_COOLDOWN;
+function updateTokens(dt, $container) {
+  const tokens = GAME_STATE.tokens;
+  for (let i = 0; i < lasers.length; i++) {
+    const laser = lasers[i];
+    laser.y -= dt * LASER_MAX_SPEED;
+    if (laser.y < 0) {
+      destroyLaser($container, laser);
+    }
+    setPosition(laser.$element, laser.x, laser.y);
+    const r1 = laser.$element.getBoundingClientRect();
+    const enemies = GAME_STATE.enemies;
+    for (let j = 0; j < enemies.length; j++) {
+      const enemy = enemies[j];
+      if (enemy.isDead) continue;
+      const r2 = enemy.$element.getBoundingClientRect();
+      if (rectsIntersect(r1, r2)) {
+        // Enemy was hit
+        destroyEnemy($container, enemy);
+        destroyLaser($container, laser);
+        break;
+      }
     }
   }
-  GAME_STATE.enemies = GAME_STATE.enemies.filter((e) => !e.isDead);
+  GAME_STATE.lasers = GAME_STATE.lasers.filter((e) => !e.isDead);
 }
-
-// tokens
-// function createTokens($container, x, y) {
-//   const $element = document.createElement("img");
-//   const index = Math.random() * tokensArray.lenghth;
-//   $element.src = tokensArray[index].url;
-//   $element.className = "token";
-//   $element.setAttribute("data-point", tokensArray[index].point);
-//   $container.appendChild($element);
-//   const tokens = { x, y, $element };
-//   GAME_STATE.tokens.push(tokens);
-//   // const audio = new Audio("./pictures/sound/sfx-laser1.ogg");
-//   // audio.play();
-//   setPosition($element, x, y);
-// }
-
-// function updateTokens(dt, $container) {
-//   const tokens = GAME_STATE.tokens;
-//   for (let i = 0; i < tokensArray.length; i++) {
-//     const tokens = tokens[i];
-//     tokens.y -= dt * LASER_MAX_SPEED;
-//     if (tokens.y < 0) {
-//       destroyLaser($container, tokens);
-//     }
-//     setPosition(tokens.$element, tokens.x, tokens.y);
-//     const r1 = tokens.$element.getBoundingClientRect();
-//     const enemies = GAME_STATE.enemies;
-//     for (let j = 0; j < enemies.length; j++) {
-//       const enemy = enemies[j];
-//       if (enemy.isDead) continue;
-//       const r2 = enemy.$element.getBoundingClientRect();
-//       if (rectsIntersect(r1, r2)) {
-//         // Enemy was hit
-//         destroyToken($container, tokens);
-//         // get attribute point form container nd push into array.
-//       }
-//     }
-//   }
-//   GAME_STATE.tokens = GAME_STATE.tokens.filter((e) => !e.isDead);
-// }
 
 function init() {
   const $container = document.querySelector(".Game");
   createPlayer($container);
-
-  const enemySpacing =
-    (GAME_WIDTH - ENEMY_HORIZONTAL_PADDING * 90) / ENEMIES_PER_ROW - 0.5;
-  for (let j = 0; j < 3; j++) {
-    const y = ENEMY_VERTICAL_PADDING + j * ENEMY_VERTICAL_SPACING;
-    for (let i = 0; i < ENEMIES_PER_ROW; i++) {
-      const x = i * enemySpacing + ENEMY_HORIZONTAL_PADDING;
-      createEnemy($container, x, y);
-    }
-  }
 }
 
 function update(e) {
   const currentTime = Date.now();
   const dt = (currentTime - GAME_STATE.lastTime) / 1000.0;
-
-  // display gameover block
-  if (GAME_STATE.gameOver) {
-    document.querySelector(".game-over").style.display = "block";
-    return;
-  }
-
-  // display winning
-  function playerHasWon() {
-    return GAME_STATE.enemies.length === 0;
-  }
 
   const $container = document.querySelector(".Game");
   updatePlayer(dt, $container);

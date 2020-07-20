@@ -13,9 +13,9 @@ const LASER_MAX_SPEED = 300.0;
 const LASER_COOLDOWN = 0.5;
 
 const TOKENS_PER_ROW = 10;
-const ENEMIES_PER_ROW = 3;
-const ENEMY_HORIZONTAL_PADDING = 30;
-const ENEMY_VERTICAL_PADDING = 20;
+const ENEMIES_PER_ROW = 6;
+const ENEMY_HORIZONTAL_PADDING = 10;
+const ENEMY_VERTICAL_PADDING = 30;
 const ENEMY_VERTICAL_SPACING = 40;
 const ENEMY_COOLDOWN = 5.0;
 // contains entire state of game which included position of player, lasers and enemies on screen.
@@ -202,25 +202,18 @@ function destroyLaser($container, laser) {
 
 // // CREATE ENEMY
 function createEnemy($container, x, y) {
-  const $element1 = document.createElement("img");
-  const $element2 = document.createElement("img");
-  $element1.src =
-    "/jsFolder/pictures/MathApics/invaders_png/angerangryalien1.png";
-  $element2.src = "/jsFolder/pictures/MathApics/invaders_png/orange.png";
-  $element1.className = "enemy";
-  $element2.className = "enemy";
-  $container.appendChild($element1);
-  $container.appendChild($element2);
+  const $element = document.createElement("img");
+  $element.src = "/jsFolder/pictures/img/enemy-blue-1.png";
+  $element.className = "enemy";
+  $container.appendChild($element);
   const enemy = {
     x,
     y,
     cooldown: rand(0.5, ENEMY_COOLDOWN),
-    $element1,
-    $element2,
+    $element,
   };
   GAME_STATE.enemies.push(enemy);
-  setPosition($element1, x, y);
-  setPosition($element2, x, y);
+  setPosition($element, x, y);
 }
 
 function updateEnemies(dt, $container) {
@@ -287,7 +280,7 @@ function init() {
   createPlayer($container);
 
   const enemySpacing =
-    (GAME_WIDTH - ENEMY_HORIZONTAL_PADDING * 90) / ENEMIES_PER_ROW - 0.5;
+    (GAME_WIDTH - ENEMY_HORIZONTAL_PADDING * 50) / ENEMIES_PER_ROW - 0.5;
   for (let j = 0; j < 3; j++) {
     const y = ENEMY_VERTICAL_PADDING + j * ENEMY_VERTICAL_SPACING;
     for (let i = 0; i < ENEMIES_PER_ROW; i++) {
