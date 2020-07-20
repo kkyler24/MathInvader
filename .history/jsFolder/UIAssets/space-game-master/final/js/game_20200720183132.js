@@ -230,7 +230,7 @@ function updateEnemyLasers(dt, $container) {
 }
 
 function init() {
-  const $container = document.querySelector(".Game");
+  const $container = document.querySelector(".game");
   createPlayer($container);
 
   const enemySpacing =
@@ -262,7 +262,7 @@ function update(e) {
     return;
   }
 
-  const $container = document.querySelector(".Game");
+  const $container = document.querySelector(".game");
   updatePlayer(dt, $container);
   updateLasers(dt, $container);
   updateEnemies(dt, $container);

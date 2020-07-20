@@ -40,7 +40,7 @@ function rectsIntersect(r1, r2) {
 }
 
 function setPosition(el, x, y) {
-  el.style.transform = `translate(${x}px, ${y}px)`;
+  el.styles.transform = `translate(${x}px, ${y}px)`;
 }
 
 function clamp(v, min, max) {

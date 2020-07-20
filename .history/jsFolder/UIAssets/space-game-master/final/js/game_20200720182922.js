@@ -63,8 +63,7 @@ function createPlayer($container) {
   GAME_STATE.playerX = GAME_WIDTH / 2;
   GAME_STATE.playerY = GAME_HEIGHT - 50;
   const $player = document.createElement("img");
-  $player.src = "/jsFolder/pictures/MathApics/spaceship/spaceship3.png";
-  $player.style = "height:90px, width: 90px";
+  $player.src = "img/player-blue-1.png";
   $player.className = "player";
   $container.appendChild($player);
   setPosition($player, GAME_STATE.playerX, GAME_STATE.playerY);
@@ -105,7 +104,7 @@ function updatePlayer(dt, $container) {
 
 function createLaser($container, x, y) {
   const $element = document.createElement("img");
-  $element.src = "/jsFolder/pictures/img/laser-blue-1.png";
+  $element.src = "img/laser-blue-1.png";
   $element.className = "laser";
   $container.appendChild($element);
   const laser = { x, y, $element };
@@ -230,7 +229,7 @@ function updateEnemyLasers(dt, $container) {
 }
 
 function init() {
-  const $container = document.querySelector(".Game");
+  const $container = document.querySelector(".game");
   createPlayer($container);
 
   const enemySpacing =
@@ -262,7 +261,7 @@ function update(e) {
     return;
   }
 
-  const $container = document.querySelector(".Game");
+  const $container = document.querySelector(".game");
   updatePlayer(dt, $container);
   updateLasers(dt, $container);
   updateEnemies(dt, $container);
